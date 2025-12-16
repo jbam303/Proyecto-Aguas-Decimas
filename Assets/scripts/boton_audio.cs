@@ -9,11 +9,14 @@ public class boton_audio : MonoBehaviour
     public void Reproducir()
     {
         sonando = false;
-        foreach (AudioSource audio in audio_sonando)
+        if (audio_sonando != null)
         {
-            if (audio.isPlaying)
+            foreach (AudioSource audio in audio_sonando)
             {
-                sonando = true;
+                if (audio.isPlaying)
+                {
+                    sonando = true;
+                }
             }
         }
 

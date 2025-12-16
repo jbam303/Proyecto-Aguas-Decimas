@@ -25,7 +25,6 @@ public class InteraccionJugador : MonoBehaviour
 
             if (botonTocado != null)
             {
-                Debug.Log("Botón presionado: " + botonTocado.name);
                 botonTocado.onClick.Invoke();
             }
         }
