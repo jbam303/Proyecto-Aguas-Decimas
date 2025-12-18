@@ -12,9 +12,6 @@ public class CompuertaMaestra : MonoBehaviour
     // Arrastra aquí el 'PivoteCascada' y el 'Rio' (si quieres que se seque)
     public List<Transform> aguasParaSecar; 
 
-    [Header("3. La Espuma (Opcional)")]
-    public ParticleSystem espumaCascada; // Arrastra tu sistema de partículas aquí
-
     [Header("Configuración")]
     public float velocidadAnimacion = 2.0f;
     private bool estaAbierta = true; // Asumimos que empieza abierta
@@ -50,13 +47,6 @@ public class CompuertaMaestra : MonoBehaviour
         // Calculamos destino de la puerta: Si cerramos, bajamos Y. Si abrimos, volvemos a origen.
         Vector3 metaPuerta = estaAbierta ? posInicialPuerta : posInicialPuerta - new Vector3(0, distanciaBajada, 0);
         Vector3 inicioPuerta = puertaFisica.localPosition;
-
-        // Lógica de Espuma: Si cerramos, dejamos de emitir. Si abrimos, emitimos.
-        if (espumaCascada != null)
-        {
-            if (estaAbierta) espumaCascada.Play();
-            else espumaCascada.Stop(); // Stop deja que las partículas vivas mueran naturalmente
-        }
 
         while (t < 1)
         {

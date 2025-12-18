@@ -1,2 +1,0 @@
-C:\Users\felip\OneDrive\Documentos\unity_proyecto\opcional\Proyecto-Aguas-Decimas\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
-C:\Users\felip\OneDrive\Documentos\unity_proyecto\opcional\Proyecto-Aguas-Decimas\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
