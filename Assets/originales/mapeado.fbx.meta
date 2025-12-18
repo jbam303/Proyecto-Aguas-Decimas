@@ -3,32 +3,7 @@ guid: 7abe063ceab6c3d4e96ddb75273a748d
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: 90aa7cba58c4043499176fba0046c3d6, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: modelo_3D_Aguasdecimas
-    second: {fileID: 2100000, guid: d16fca29f676ee6438765de501c02db1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: modelo_3D_Aguasdecimas1
-    second: {fileID: 2100000, guid: 59f67dae8b4d2df4b8679f57d9c27c96, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: modelo_3D_Aguasdecimas2
-    second: {fileID: 2100000, guid: e614f4f78a5d29a4990f1ba72ab7d315, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: modelo_3D_Aguasdecimas3
-    second: {fileID: 2100000, guid: 8ef2bbe1beeba6e4797d2000d9d456a6, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
