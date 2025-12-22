@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
-// Asegura que este objeto tenga un CharacterController
 [RequireComponent(typeof(CharacterController))]
 public class PCMovement : MonoBehaviour
 {
     [Header("Referencias")]
-    public Transform cameraTransform; // Arrastra la cámara hija aquí
+    public Transform cameraTransform;
 
-    [Header("Configuración de Movimiento")]
+    [Header("ConfiguraciÃ³n de Movimiento")]
     public float moveSpeed = 5.0f;
     public float mouseSensitivity = 2.0f;
     public float gravity = -9.81f;
@@ -22,13 +22,12 @@ public class PCMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
 
-        // Esconder y bloquear el cursor para el modo PC
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         if (cameraTransform == null)
         {
-            Debug.LogError("¡No has asignado la cámara en el script PCMovement!");
+            Debug.LogError("No has asignado la cÃ¡mara en el script PCMovement");
         }
 
         escena_inicial = SceneManager.GetActiveScene().name;
@@ -36,38 +35,45 @@ public class PCMovement : MonoBehaviour
 
     void Update()
     {
-        // --- VISTA CON MOUSE ---
+        float mouseX = 0;
+        float mouseY = 0;
 
-        // Obtener movimiento del mouse
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
-
-        // Rotar el jugador (cuerpo) de izquierda a derecha
+        if (Mouse.current != null)
+        {
+            Vector2 mouseDelta = Mouse.current.delta.ReadValue();
+            
+            mouseX = mouseDelta.x * mouseSensitivity * 0.1f;
+            mouseY = mouseDelta.y * mouseSensitivity * 0.1f;
+        }
         transform.Rotate(Vector3.up * mouseX);
 
-        // Rotar la cámara (cabeza) de arriba a abajo
         verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f); // Limitar la vista
-        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
-
-        // --- MOVIMIENTO WASD ---
+        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
+        if (cameraTransform != null)
+        {
+            cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        }
 
         if (escena_inicial != "Inicio")
         {
-            // Obtener movimiento del teclado
-            float moveX = Input.GetAxis("Horizontal"); // A/D
-            float moveZ = Input.GetAxis("Vertical"); // W/S
+            float moveX = 0;
+            float moveZ = 0;
 
-            // Calcular la dirección del movimiento basado en la rotación del jugador
+            if (Keyboard.current != null)
+            {
+                if (Keyboard.current.wKey.isPressed) moveZ = 1f;
+                if (Keyboard.current.sKey.isPressed) moveZ = -1f;
+                if (Keyboard.current.dKey.isPressed) moveX = 1f;
+                if (Keyboard.current.aKey.isPressed) moveX = -1f;
+            }
+
             Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
-
-            // Aplicar movimiento
+            
             controller.Move(moveDirection * moveSpeed * Time.deltaTime);
 
-            // --- GRAVEDAD ---
             if (controller.isGrounded && velocity.y < 0)
             {
-                velocity.y = -2f; // Un pequeño valor para mantenerlo pegado al suelo
+                velocity.y = -2f;
             }
 
             velocity.y += gravity * Time.deltaTime;

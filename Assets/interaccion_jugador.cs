@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class InteraccionJugador : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class InteraccionJugador : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             DispararRayo();
         }
@@ -19,7 +20,7 @@ public class InteraccionJugador : MonoBehaviour
         Ray rayo = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(rayo, out hit, distanciaInteraccion))
+        if (Physics.Raycast(rayo, out hit, distanciaInteraccion, capaBoton))
         {
             Button botonTocado = hit.collider.GetComponent<Button>();
 
