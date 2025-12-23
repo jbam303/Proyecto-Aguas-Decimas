@@ -4,6 +4,9 @@ public class desactivar_cosas : MonoBehaviour
 {
     public GameObject[] textos;
     public GameObject primer_texto;
+    public GameObject ultimo_texto;
+    public GameObject boton_siguiente;
+    public GameObject boton_iniciar;
     private int cantidad_textos;
     private int contador = 0;
 
@@ -32,6 +35,12 @@ public class desactivar_cosas : MonoBehaviour
             {
                 textos[contador].SetActive(true);
 
+                if (ultimo_texto.activeSelf)
+                {
+                    boton_siguiente.SetActive(false);
+                    boton_iniciar.SetActive(true);
+                }
+
                 if (contador > 0)
                 {
                     textos[contador-1].SetActive(false);
@@ -48,6 +57,12 @@ public class desactivar_cosas : MonoBehaviour
     {
         if (contador > 0)
         {
+            if (ultimo_texto.activeSelf)
+            {
+                boton_siguiente.SetActive(true);
+                boton_iniciar.SetActive(false);
+            }
+
             if (textos[contador-1].activeSelf)
             {
                 textos[contador-1].SetActive(false);
