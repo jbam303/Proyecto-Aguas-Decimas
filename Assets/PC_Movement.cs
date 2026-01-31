@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Asegura que este objeto tenga un CharacterController
 [RequireComponent(typeof(CharacterController))]
@@ -15,6 +16,7 @@ public class PCMovement : MonoBehaviour
     private CharacterController controller;
     private float verticalRotation = 0f;
     private Vector3 velocity;
+    private string escena_inicial;
 
     void Start()
     {
@@ -28,6 +30,8 @@ public class PCMovement : MonoBehaviour
         {
             Debug.LogError("¡No has asignado la cámara en el script PCMovement!");
         }
+
+        escena_inicial = SceneManager.GetActiveScene().name;
     }
 
     void Update()
@@ -48,23 +52,26 @@ public class PCMovement : MonoBehaviour
 
         // --- MOVIMIENTO WASD ---
 
-        // Obtener movimiento del teclado
-        float moveX = Input.GetAxis("Horizontal"); // A/D
-        float moveZ = Input.GetAxis("Vertical"); // W/S
-
-        // Calcular la dirección del movimiento basado en la rotación del jugador
-        Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
-
-        // Aplicar movimiento
-        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
-
-        // --- GRAVEDAD ---
-        if (controller.isGrounded && velocity.y < 0)
+        if (escena_inicial != "Inicio")
         {
-            velocity.y = -2f; // Un pequeño valor para mantenerlo pegado al suelo
-        }
+            // Obtener movimiento del teclado
+            float moveX = Input.GetAxis("Horizontal"); // A/D
+            float moveZ = Input.GetAxis("Vertical"); // W/S
 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+            // Calcular la dirección del movimiento basado en la rotación del jugador
+            Vector3 moveDirection = transform.right * moveX + transform.forward * moveZ;
+
+            // Aplicar movimiento
+            controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+
+            // --- GRAVEDAD ---
+            if (controller.isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2f; // Un pequeño valor para mantenerlo pegado al suelo
+            }
+
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+        }
     }
 }
