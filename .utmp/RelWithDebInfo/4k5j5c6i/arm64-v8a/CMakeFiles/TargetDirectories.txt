@@ -1,0 +1,5 @@
+C:/Users/renoj/Desktop/Proyecto-Aguas-Decimas/.utmp/RelWithDebInfo/4k5j5c6i/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/renoj/Desktop/Proyecto-Aguas-Decimas/.utmp/RelWithDebInfo/4k5j5c6i/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/renoj/Desktop/Proyecto-Aguas-Decimas/.utmp/RelWithDebInfo/4k5j5c6i/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Users/renoj/Desktop/Proyecto-Aguas-Decimas/.utmp/RelWithDebInfo/4k5j5c6i/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/renoj/Desktop/Proyecto-Aguas-Decimas/.utmp/RelWithDebInfo/4k5j5c6i/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
