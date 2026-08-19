@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class detener_reanudar : MonoBehaviour
 {
-    public AudioSource sonido_cascada;
+    public AudioSource sonido_loop;
     public ParticleSystem gotas;
     public ParticleSystem espuma;
-    public void reproducir()
+    public void Reproducir()
     {
-        if (sonido_cascada.isPlaying)
+        if (sonido_loop.isPlaying)
         {
-            sonido_cascada.Stop();
+            sonido_loop.Stop();
             gotas.Stop();
             espuma.Stop();
         }
         else
         {
-            sonido_cascada.Play();
+            sonido_loop.Play();
             gotas.Play();
             espuma.Play();
         }

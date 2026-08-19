@@ -1,0 +1,10 @@
+newmtl pilares
+map_Kd textura_proceso_2.png
+Kd 1 1 1
+d 1
+
+newmtl proceso_2
+map_Kd textura_proceso_2.png
+Kd 1 1 1
+d 1
+
