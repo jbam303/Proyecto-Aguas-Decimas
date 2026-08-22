@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class activar_outline : MonoBehaviour
 {
-    public GameObject objetoConOutline;
     private Outline_script miOutline; 
 
     void Start()
     {
-        if (objetoConOutline != null)
+        miOutline = GetComponentInChildren<Outline_script>();
+
+        if (miOutline == null)
         {
-            miOutline = objetoConOutline.GetComponent<Outline_script>();
+            Debug.LogWarning("No se encontró el Outline_script dentro de: " + gameObject.name);
         }
     }
 
