@@ -8,7 +8,8 @@ public class desactivar_cosas : MonoBehaviour
     public GameObject boton_siguiente;
     public GameObject boton_iniciar;
     private int cantidad_textos;
-    private int contador = 0;
+    public int contador = 0;
+    public validar_equipo gestor_canvas;
 
     void Awake()
     {
@@ -38,7 +39,11 @@ public class desactivar_cosas : MonoBehaviour
                 if (ultimo_texto.activeSelf)
                 {
                     boton_siguiente.SetActive(false);
-                    boton_iniciar.SetActive(true);
+
+                    if (gestor_canvas.contador >= 4)
+                    {
+                        boton_iniciar.SetActive(true);
+                    }
                 }
 
                 if (contador > 0)
@@ -60,7 +65,10 @@ public class desactivar_cosas : MonoBehaviour
             if (ultimo_texto.activeSelf)
             {
                 boton_siguiente.SetActive(true);
-                boton_iniciar.SetActive(false);
+                if (boton_iniciar.activeSelf)
+                {
+                    boton_iniciar.SetActive(false);
+                }
             }
 
             if (textos[contador-1].activeSelf)

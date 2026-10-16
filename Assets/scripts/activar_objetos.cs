@@ -32,16 +32,22 @@ public class activar_objetos : MonoBehaviour
         {
             foreach(GameObject obj in objetos)
             {
-                obj.SetActive(true);
+                if (obj != null)
+                {
+                    obj.SetActive(true);
+                }
             }
         }
         else
         {
             foreach(GameObject obj in objetos)
             {
-                if (obj.activeSelf)
+                if  (obj != null)
                 {
-                    obj.SetActive(false);
+                    if (obj.activeSelf)
+                    {
+                        obj.SetActive(false);
+                    }
                 }
             }
         }

@@ -5,6 +5,8 @@ public class btn_manager : MonoBehaviour
 {
     public string escena_iniciar;
     public string escena_saltar;
+    public GameObject canva_menu;
+    public GameObject canva_creditos;
 
     public void Iniciar()
     {
@@ -14,6 +16,18 @@ public class btn_manager : MonoBehaviour
     public void Saltar()
     {
         SceneManager.LoadScene(escena_saltar);
+    }
+
+    public void Creditos()
+    {
+        canva_menu.SetActive(false);
+        canva_creditos.SetActive(true);
+    }
+
+    public void Volver()
+    {
+        canva_creditos.SetActive(false);
+        canva_menu.SetActive(true);
     }
 
     public void Salir()

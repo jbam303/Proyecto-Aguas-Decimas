@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CambiarPadre : MonoBehaviour
+public class poner_chaleco : MonoBehaviour
 {
     public GameObject objetoHijo;
     public GameObject objetoPadre;
